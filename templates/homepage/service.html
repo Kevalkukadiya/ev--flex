@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %} About us {% endblock title%}
+{% block content %}
+{% load static %}
+
+
+<!doctype html>
+<html lang="en-GB">
+<head>
+    <title>EV Flex| About</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="EV Flexis an ev charging community - Learn more about the community here - Join; it&#039;s free! - Near home, near route or destination charging. Locate, Book," />
+    <link rel="stylesheet" href="{% static 'homepage/about.css' %}">
+
+</head>
+<body class="font-inter text-bmc-black">
+
+<div id="app">
+
+
+
+
+        <div class="md:grid grid-cols-2 gap-x-32 p-4 md:py-20">
+        <div>
+            <img src="{% static 'img/charging-station.svg' %}" alt="Charging station" class="mx-auto">
+        </div>
+        <div class="text-white paras md:order-first">
+            <h1 class="text-white text-3xl md:text-6xl font-bold mt-8">Our Service</h1>
+            <h5 class="text-white text-3xl md:text-3xl font-bold mt-8">
+            <p>You can Book Slot for you E-Vehicles without any hidden chargepoint.
+                <br>
+                As Customer can Find nearby Station and Check Slot.
+                <br>
+                Station owner have EV Station they can put slot on our website and earn money.
+                
+            </h5>
+
+        </div>
+    </div>
+    </div>
+</div>
+
+
+
+</div>
+
+</body>
+</html>
+
+
+{% endblock content %}

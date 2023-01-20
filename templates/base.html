@@ -1,0 +1,192 @@
+{% load static %}   
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!--Font awesome icons -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'homepage/register.css' %}">
+
+    <title>EV Flex</title>
+</head>
+<style>
+    body {
+        background-color: #6EA1D4;
+      }
+</style>      
+<body>
+{% comment %} <style>
+    .tdStyle
+    {
+    background-image:url('{{ STATIC_URL }}img/chargepoint-handshake.png');
+    background-repeat:no-repeat;
+    background-size:100%;
+    }
+</style> {% endcomment %}
+ 
+<div>
+  <div class="container mx-auto bg-spark">
+      <nav class="text-white flex justify-center md:justify-between py-6">
+          <div class="w-1/2 md:w-auto">
+             
+                  <a href="/">
+                      <img src="{% static 'img/evflex.png' %}" alt="EV Flex">
+                  </a>
+                  {% comment %} <img src="{% static 'img/favicon.ico %}" alt="EV Flex logo"> {% endcomment %}
+             
+          </div>
+
+        <div class="flex-wrap content-start space-x-8 hidden md:flex pl-4 topnav">
+              
+
+              <div>
+                  <a href="{% url 'about' %}" class="hover:underline">About</a>
+              </div>
+              
+              <div>
+                  <a href="{% url 'contact' %}" class="hover:underline">Contact</a>
+              </div>
+
+              <div>
+                  <a href="{% url 'service' %}" class="hover:underline">Our Services</a>
+              </div>
+
+              
+              {% if user.is_authenticated %}
+                  <a href="{% url 'users-profile' %}" class="hover:underline">Profile</a>
+                  
+                {% if user.user_type == "CUSTOMER" %}
+                      <a href="{% url 'add_vehicle' %}" class="hover:underline">Vehicle</a>
+                      <div>
+                        <a href="#" class="hover:underline">Find a chargepoint</a>
+                      </div>
+
+                {% elif user.user_type == "OWNER" %}
+                    <a href="{% url 'add_station' %}" class="hover:underline">Station</a>
+                    <div>
+                        <a href="{% url 'create_slot' %}" class="hover:underline">Add your chargepoint</a>
+                    </div>
+                      
+                {% endif %}
+
+                <a href="{% url 'logout' %}" class="hover:underline">Log Out</a>
+                
+              {% else %}
+                  <a href="{% url 'admin_register' %}" class="hover:underline">Register as Owner</a>
+                  <a href="{% url 'login' %}" class="hover:underline">Login as Owner</a>
+            
+            
+              
+              
+        </div>
+          
+          <div class="hidden md:block">
+              <div class="md:flex justify-end">
+                  <div class="bg-white bg-opacity-30 text-black rounded-full p-3 px-8 hover:ring m-1">
+                      <a href="{% url 'register' %}" class="whitespace-nowrap">Register</a>
+                  </div>
+                  <div class="bg-white text-bmc-black rounded-full p-3 px-8 hover:ring m-1">
+                      <a href="{% url 'login' %}" class="whitespace-nowrap">Login</a>
+                  </div>
+                  {% endif %}
+              </div>
+          </div>
+      </nav>
+      
+
+        <!--Any flash messages pop up in any page because this is the base template-->
+        {% if messages %}
+          <div class="alert alert-dismissible" role="alert">
+            {% for message in messages %}
+              <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+            {% endfor %}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        {% endif %}
+        {% block content %}{% endblock %}
+      </div>
+    </div>
+  </div>
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <!-- A plugin for password show/hide  -->
+    <script src="https://unpkg.com/bootstrap-show-password@1.2.1/dist/bootstrap-show-password.min.js"></script>
+
+</body>
+</html>
+
+{% comment %} 
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>EV Flex</title>
+    <link rel="apple-touch-icon" sizes="57x57" href="static/apple-icon-57x57.png">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+     <!-- Date Time Picker CSS -->
+    <link rel="stylesheet" href="{% static 'date-time-phone/jquery-ui.css' %}">
+    <link rel='stylesheet' href="{% static 'date-time-phone/jquery-ui-timepicker-addon.css' %}" />
+    <!-- Date Time Picker CSS -->
+
+</head>
+<body class="override">
+    <nav class="navbar navbar-inverse" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar">Home Page</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                  <a class="navbar-brand" href="{% url 'home' %}">Home</a>
+                  <a class="navbar-brand" href=#>EV Flex</a>
+
+
+                <a class="navbar-brand" href=>Register as Station Owner</a>
+                <a class="navbar-brand" href="{% url 'register' %}">Register as Customer</a> 
+            </div>
+           
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    {% if user.is_authenticated %}
+                    <div class="alert alert-success" role="alert">
+                        <a href="{% url 'logout' %}">Logout</a>
+                    </div>
+                {% else %}
+                    <div class="navbar-brand" role="alert">
+                        <a href="{% url 'register' %}">Signup</a>
+                        <a href="{% url 'login' %}">Login</a>
+                    </div>
+    
+                {% endif %}
+                </ul>
+            </div> 
+                
+        </div>
+    </nav>
+   
+    <div class="container">
+        <div class="row">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+  
+</body> {% endcomment %}

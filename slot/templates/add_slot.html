@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+<link rel="stylesheet" href="{% static 'homepage/figma1.css' %}">
+
+<body class="font-inter">
+
+
+    <div class="form-content my-3 p-3">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-5">
+                        <div class="card shadow-lg border-0 rounded-lg mt-0 mb-3">
+                            <div class="card-header justify-content-center">
+                              <h3 class="font-weight-light my-1 text-center">Add Your Station</h3>
+
+                            </div>
+
+                                <div class="card-body">
+                                    <div>
+                                        
+                                        <form method="post" novalidate>
+                                            {% csrf_token %}
+                                            <div class="form-row">
+                                            
+
+                                            <div class="form-group col-md-12 mb-0">
+                                                {{ form.slot_name|as_crispy_field }}
+                                            </div>
+                                                
+                                            <div class="form-group col-md-12 mb-0">
+                                                {{ form.per_unit_price|as_crispy_field }}
+                                            </div>
+                                                
+                                            <div class="form-group col-md-6 mb-0">
+                                                {{ form.current_status|as_crispy_field }}
+                                            </div>
+                                           
+                                            <div class="form-group col-md-6 mb-0">
+                                                {{ form.station|as_crispy_field }}
+                                            </div>
+                                            
+                                                
+                                            <button type="submit" class="w-full rounded-full bg-red-gradient p-3 text-white font-bold hover:ring">
+                                                Add Station
+                                            </button>
+                                            </div>
+                                        </form> 
+                                        
+                                        
+                                        <br>
+                                        <div>
+                                           <button class="w-half rounded-full bg-red-gradient p-3 text-white font-bold hover:ring">
+                                                
+                                                <a href="{% url 'view_slot' %}">View your Slot</a>
+                                            </button> 
+                                        </div>
+                                    </div>
+                                            
+                                </div>
+                            
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+{% endblock content %}    

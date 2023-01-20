@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en-GB"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>EV Flex | Home</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="EV Flex is an EV charging community - Join today - it&#39;s free! Find and book a chargepoint. List your chargepoint for other to pay to use.">
+	<link rel="stylesheet" href="{% static 'homepage/figma.css' %}">
+   
+   
+<!-- Google Tag Manager (noscript) -->
+<noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M9FGSBN" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+<!-- End Google Tag Manager (noscript) -->
+<div id="app" data-v-app="">
+    <div class="absolute md:hidden">
+    <!---->
+    <div class="absolute rounded-full h-9 w-9 flex items-center justify-center top-4 left-4 bg-white text-bmc-blue">☰</div><!---->
+</div>
+
+        <div class="flex flex-wrap text-white border-0">
+            <div class="w-full md:w-5/12 border-0">
+                <img src="{% static 'img/chargepoint-handshake.png' %}" alt="Chargepoint handshake">
+            </div>
+            
+            <div class="w-full md:w-7/12 border-0 p-5">
+                <h1 class="display-4">Welcome, {{user.first_name.title|default:'Guest'}}</h1>
+                <h1 class="text-3xl md:text-6xl font-bold md:leading-tight">The India’s bookable home and destination EV charging network 
+                    Check your upcoming Booking
+                </h1>
+                <div class="py-4 md:hidden">Sign up to EV Flex and we need very few details to get you started on the charging journey. </div>
+                <div class="flex pb-4 text-sm font-bold justify-around md:justify-start md:space-x-8 md:pt-4">
+                    
+            </div>
+
+            <div class="flex flex-col md:flex-row">
+                <div class="py-2 md:px-2">
+                    <a href= "{% url 'chargepoint' %}" class="w-full text-center bg-red-gradient font-bold rounded-full inline-block p-4 hover:ring">
+                        Add your chargepoint
+                    </a>  
+                </div> 
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="container mx-auto p-4 pb-12">
+    <div class="flex justify-center border-0">
+        <h2 class="text-3xl md:text-4xl font-black py-8">Why EV Flex?</h2>
+    </div>
+
+    <div class="grid md:grid-cols-4 gap-4">
+        <div class="md:border-r md:px-4 md:px-10">
+            <div class="bg-blue-gradient rounded-full w-8 h-8 p-1 my-2">
+                <img src="{% static 'homepage/home_img/spark.svg' %}" alt="Spark">
+            </div>
+            <div class="my-2">
+                <h3 class="text-xl md:text-2xl font-bold">Charging certainty</h3>
+            </div>
+            <div class="text-bmc-gray my-2">Public chargers are often in use or out or order. By booking a chargepoint, you know it’s available and working when you need it. </div>
+        </div>
+
+        <div class="md:border-r md:px-4 md:px-10">
+            <div class="bg-blue-gradient rounded-full w-8 h-8 p-1 my-2">
+                <img src="{% static 'homepage/home_img/people.svg' %}" alt="People">
+            </div>
+
+            <div class="my-2">
+                <h3 class="text-xl md:text-2xl font-bold">Sharing community</h3>
+            </div>
+
+            <div class="text-bmc-gray my-2">Our community of chargepoint owners help EV drivers by wiping out charging deserts and providing a UK-wide charging safety net</div>
+        </div>
+
+        <div class="md:border-r md:px-4 md:px-10">
+            <div class="bg-blue-gradient rounded-full w-8 h-8 p-1 my-2">
+                <img src="{% static 'homepage/home_img/eye.svg' %}" alt="Eye">
+
+            </div>
+
+            <div class="my-2">
+                <h3 class="text-xl md:text-2xl font-bold">Range assurance</h3>
+            </div>
+            
+            <div class="text-bmc-gray my-2">Range anxiety can spoil your day out, business trip or staycation. Our network of residential, 
+                rural and destination chargepoints provide peace of mind
+            </div>
+        </div>
+        
+        <div class="md:px-4 md:px-10">
+            <div class="bg-blue-gradient rounded-full w-8 h-8 p-1 my-2">
+                <img src="{% static 'homepage/home_img/leaf.svg' %}"alt="Leaf">
+            </div>
+
+            <div class="my-2">
+                <h3 class="text-xl md:text-2xl font-bold">Healthier &amp; greener</h3>
+            </div>
+
+            <div class="text-bmc-gray my-2">EVs help to reduce emissions and improve our air quality.
+                 That’s good news for our health and our planet
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+
+{% endblock content %}

@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+<!doctype html>
+<html lang="en-GB">
+<head>
+    {% comment %} <title>EV Flex | Register</title> {% endcomment %}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Make money from your EV chargepoint. It is easy and free to list and share your electric vehicle charging point for fellow EV drivers." />
+    <link rel="stylesheet" href="{% static 'homepage/figma1.css' %}">
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+        
+        th, td {
+            width:auto;
+            text-align:center;
+            border:1px solid black;
+            padding:5px
+
+         
+        }
+        
+    </style>    
+
+    
+</head>
+<body class="font-inter">
+<!-- ****** table  start ********** -->
+<body class="font-inter">
+
+
+    <div class="form-content my-6 p-6">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-12 content-center">
+                        <div class="card shadow-lg border-0 rounded-lg mt-0 mb-3">
+                            <div class="card-header justify-content-center">
+                              <h3 class="font-weight-light my-1 text-center">Station Deatils</h3>
+
+                            </div>
+
+
+                            
+                            <div class="card-body">
+                                
+                            <table>
+                            <thead>
+                                <tr>
+                                    <th>Slot name</th><br>
+                                    <br><th>Price of per unit </th>
+                                    <th>Current Status</th>
+                                    <th>Station of Slot </th>
+                                    <th>Update</th>
+                                    <th>Delete</th>
+                                </tr>
+                                
+					        </thead>
+					        <tbody>
+
+                                {% for st in slot %}
+                                <tr>
+                                <td> {{st.slot_name}}</td>
+                                <td>{{st.per_unit_price}}</td>
+                                <td>{{st.current_status}}</td>
+                                <td>{{st.station}}</td>
+                                <td style="padding:10px;"><a href="{% url 'edit_slot' st.pk %}">Edit</a></td>
+                                {% comment %} <td style="padding:10px;"><a href="{% url 'delete_station' s.pk %}">Delete</a></td>  {% endcomment %}
+                                </tr>
+                                {% endfor %}
+
+							</tbody>
+				            </table>
+                                       
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>                        
+</body>
+</html>
+
+{% endblock content %}

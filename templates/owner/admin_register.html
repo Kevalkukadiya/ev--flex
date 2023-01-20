@@ -1,0 +1,174 @@
+{% extends "base.html" %}
+{% block title %} Register Page {% endblock title%}
+{% block content %}
+{% load static %}
+<!doctype html>
+<html lang="en-GB">
+<head>
+    <title>EV Flex | Register</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Make money from your EV chargepoint. It is easy and free to list and share your electric vehicle charging point for fellow EV drivers." />
+    <link rel="stylesheet" href="{% static 'homepage/figma1.css' %}">
+    
+
+    
+</head>
+<body class="font-inter">
+
+    <div class="flex flex-col md:flex-row md:min-h-screen">
+        <div class="bg-blue-gradient p-4 md:p-8 md:px-12 md:w-7/12">
+                <div class="mx-auto md:w-5/6 md:mt-10">
+                    
+                    <h1 class="text-3xl md:text-4xl font-bold text-white my-4">Register as Owner</h1>
+                    <div class="flex justify-center md:justify-start">
+                        <img src="{% static 'img/chargepoint-handshake.png' %}" alt="Handshake at chargepoint" class="md:w-5/6">
+                    </div>
+                    <div class="">
+                        <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+                    </div>
+                    <h1 class="text-3xl md:text-4xl font-bold text-white my-4">It's quick, easy and free</h1>
+                    <div class="text-white paras">Sign up to EV Flex. We need very few details to get you started on the charging journey.
+                         We hope you'll add your own chargepoint to the growing network around the India, 
+                         but you don't have to in order to make bookings.
+                    </div>
+
+                </div>
+        </div>
+
+        <div class="p-4 md:w-5/12 md:flex md:justify-center">
+            
+            
+            <div class="flex flex-col md:w-4/5">
+                <div>
+                   
+                    <form method="POST">
+                    {% csrf_token %}
+                    <div class="flex flex-col">
+                        <div>
+
+                            <div class="my-4">
+                                <label for="email" class="block font-semibold text-sm mb-1">Register as</label>
+                                <input type="text"  name="user_type" name="Register as" value="OWNER" readonly class="w-full rounded-full bg-gray-50 border-gray-300">
+                            </div>
+                        
+                            <div class="my-4">
+                                <label for="email" class="block font-semibold text-sm mb-1">First name</label>
+                                <input type="text"  name="first_name" id="firstname" placeholder="Your first name" class="w-full rounded-full bg-gray-50 border-gray-300">
+                                {% if form.first_name.errors %}
+                                        {% for error in form.first_name.errors %}
+                                        <strong>{{ error }}</strong>
+                                        {% endfor %}
+                                {% endif %}
+                            </div>
+
+
+                            <div class="my-4">
+                                <label for="email" class="block font-semibold text-sm mb-1">Last name</label>
+                                <input type="text" name="last_name" id="last_name" placeholder="Your Last Name" class="w-full rounded-full bg-gray-50 border-gray-300">
+                                {% if form.last_name.errors %}
+                                        {% for error in form.last_name.errors %}
+                                        <strong>{{ error }}</strong>
+                                        {% endfor %}
+                                {% endif %} 
+                            </div>
+                            
+                            <div class="my-4">
+                                <label for="email" class="block font-semibold text-sm mb-1">Username</label>
+                                <input type="text" name="username" id="username" placeholder="Your Username" class="w-full rounded-full bg-gray-50 border-gray-300">
+                                {% if form.username.errors %}
+                                        {% for error in form.username.errors %}
+                                        <strong>{{ error }}</strong>
+                                        {% endfor %}
+                                {% endif %}
+
+                            </div>
+
+                           
+                            
+                            <div class="my-4">
+                                <label for="password" class="block font-semibold text-sm mb-1">Mobile Number</label>
+                                <input type="text" name="mobile_number" id="mobile_number" placeholder="1234567890" minlength="10" class="w-full rounded-full bg-gray-50 border-gray-300">
+                                {% if form.mobile_number.errors %}
+                                {% for error in form.mobile_number.errors %}
+                                <strong>{{ error }}</strong>
+                                {% endfor %}
+                                {% endif %}
+                            
+                            </div>
+
+                            <div class="my-4">
+                                <label for="password" class="block font-semibold text-sm mb-1">Business Address</label>
+                                <input type="text" name="address" id="address" placeholder="Your Business Address" class="w-full rounded-full bg-gray-50 border-gray-300">
+                                {% if form.address.errors %}
+                                        {% for error in form.address.errors %}
+                                        <strong>{{ error }}</strong>
+                                        {% endfor %}
+                                {% endif %}
+                            </div>
+                            
+
+                            <div class="my-4">
+                                <label for="email" class="block font-semibold text-sm mb-1">Email</label>
+                                <input type="email" name="email" id="email" placeholder="Your email" class="w-full rounded-full bg-gray-50 border-gray-300">
+                                {% if form.email.errors %}
+                                {% for error in form.email.errors %}
+                                <strong>{{ error }}</strong>
+                                {% endfor %}
+                                {% endif %}
+                                
+                            </div>
+
+                            <div class="my-4"><div class="relative">
+                                <label for="password" class="block font-semibold text-sm mb-1">Password</label>
+                                <input type="password" name="password" id="password" placeholder="Your password" minlength="8" 
+                                                class="w-full rounded-full bg-gray-50 border-gray-300">
+                                                {% if form.password.errors %}
+                                                {% for error in form.password.errors %}
+                                                <strong>{{ error }}</strong>
+                                                {% endfor %}
+                                                {% endif %}
+                            </div>
+
+                            <div class="my-4"><div class="relative">
+                                <label for="password" class="block font-semibold text-sm mb-1">Confirm Password</label>
+                                <input type="password" name="confirm_password" id="confirm_password" placeholder="Your Confirm Password" minlength="8" 
+                                                class="w-full rounded-full bg-gray-50 border-gray-300">
+                                                {% if form.password.errors %}
+                                                {% for error in form.password.errors %}
+                                                <strong>{{ error }}</strong>
+                                                {% endfor %}
+                                                {% endif %}
+                            </div>
+
+                            <div class="mt-5">
+                                <button type="submit" class="w-full rounded-full bg-red-gradient p-3 text-white font-bold hover:ring" 
+                                        id="btnRegister">Sign up
+                                </button>
+
+                                <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response">
+                            </div>
+
+                            <div class="w-56 mx-auto">
+                                <div class="py-2">
+                                    <div class="text-bmc-gray">Already have an
+                                        account?
+                                    </div>
+                                <div class="text-bmc-black font-bold">
+                                    <a href="{% url 'login' %}" class="hover:underline">
+                                        Sign in
+                                    </a>
+                                </div>
+                            </div>
+                            
+                                    
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+{% endblock content %}    

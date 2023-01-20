@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+<link rel="stylesheet" href="{% static 'homepage/figma1.css' %}">
+
+<body class="font-inter">
+
+
+    <div class="form-content my-3 p-3">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-5">
+                        <div class="card shadow-lg border-0 rounded-lg mt-0 mb-3">
+                            <div class="card-header justify-content-center">
+                              <h3 class="font-weight-light my-1 text-center">Add Your Vehicle</h3>
+
+                            </div>
+
+                            <form method="POST" novalidate>
+                                {% csrf_token %}
+                                <div class="card-body">
+                                    <div>
+
+                                <div class="my-4">
+                                    <label for="text" class="block text-sm mb-1">Vehicle Type*</label>
+                                    {% comment %} <input type="text"  name="vehicle_type" id="vehicle_type"  class="w-full rounded-full bg-gray-50 border-gray-300"> {% endcomment %}
+                                    <select name="vehicle_type" name="vehicle_type" class="w-full rounded-full bg-gray-50 border-gray-300">
+                                    <option value="">Select your Vehicle Type</option>
+                                    <option value="TWO-WHEELER">Two-Wheeler</option>
+                                    <option value="THREE-WHEELER">Three-Wheeler</option>
+                                    <option value="FOUR-WHEELER">Four-Wheeler</option>
+                                    </select>
+                                </div>
+                                
+                                    
+                                    <div class="w-full rounded-full bg-gray-50 border-gray-300">
+                                        
+                                        {{ form.manufacture_company|as_crispy_field }}
+                                    </div>
+
+                                    <div class="my-4">
+                                        <label for="text" class="block  text-sm mb-1">Model Name*</label>
+                                        <input type="text" name="model_name" id="model_name" placeholder="Your Vehicle Model Name" class="w-full rounded-full bg-gray-50 border-gray-300">
+                                
+                                    </div>
+                                    
+                                    <div class="my-4">
+                                        <label for="text" class="block  text-sm mb-1">Vehicle Number*</label>
+                                        <input type="text" name="vehicle_number" id="vehicle_number" placeholder="Your Vehicle Number" class="w-full rounded-full bg-gray-50 border-gray-300">
+                                        {% if form.vehicle_number.errors %}
+                                                {% for error in form.vehicle_number.errors %}
+                                                <strong>{{ error }}</strong>
+                                                {% endfor %}
+                                        {% endif %}
+
+                                    </div>
+                                    
+                
+                                        <div class="form-group">
+                                            <button type="submit" class="w-full rounded-full bg-red-gradient p-3 text-white font-bold hover:ring">
+                                                Add Vehicle
+                                            </button>
+                                        </div>
+                                        
+                                        <div>
+                                            <button  class="w-half rounded-full bg-red-gradient p-3 text-white font-bold hover:ring">
+                                                <a href="{% url 'view_vehicle' %}">View your Vehicle</a>
+                                            </button>
+                                             {% comment %} <button  class="w-half rounded-full bg-red-gradient p-3 text-white font-bold hover:ring">
+                                                <a href="{% url 'edit_vehicle' object.id  %}">Update your Vehicle</a>
+                                             </button> {% endcomment %}
+                                        </div>
+
+                                            
+                                </div>
+                            {% comment %} </form> {% endcomment %}
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+{% endblock content %}    
